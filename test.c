@@ -12,62 +12,65 @@ void sumAdjacentWithMap(int *arr)
   }
 }
 
-int sumAdjacentWithReduce(int *arr)
+void sumAdjacentWithReduce(int *arr)
 {
   int sum = 0;
   for (int i = 0; i < SIZE - 1; i++)
   {
     sum += arr[i] + arr[i + 1];
   }
-  return sum;
+
 }
 
-void sumAdjacentWithForLoop(int *arr, int *result)
+void sumAdjacentWithForLoop(int *arr)
 {
+  int result[SIZE];
   for (int i = 0; i < SIZE - 1; i++)
   {
     result[i] = arr[i] + arr[i + 1];
   }
 }
 
-int sumArrayOptimal(int *arr)
+void sumArrayOptimal(int *arr)
 {
   int sum = 0;
   for (int i = 0; i < SIZE; i++)
   {
     sum += arr[i];
   }
-  return sum;
+  
 }
 
-int sumAdjacentValues(int *arr)
+void sumAdjacentValues(int *arr)
 {
   int sum = 0;
   for (int i = 0; i < SIZE - 1; i++)
   {
     sum += arr[i] + arr[i + 1];
   }
-  return sum;
 }
 
-void sumAdjacentWithMapAndTernary(int *arr, int *result)
+void sumAdjacentWithMapAndTernary(int *arr)
 {
+  int result[SIZE];
   for (int i = 0; i < SIZE - 1; i++)
   {
     result[i] = arr[i] + arr[i + 1];
   }
 }
 
-void sumAdjacentWithArrayFrom(int *arr, int *result)
+void sumAdjacentWithArrayFrom(int *arr)
 {
+  int result[SIZE];
   for (int i = 0; i < SIZE - 1; i++)
   {
     result[i] = arr[i] + arr[i + 1];
   }
 }
 
-void sumAdjacentWithWhileLoop(int *arr, int *result)
+void sumAdjacentWithWhileLoop(int *arr)
 {
+  int result[SIZE];
   int i = 0;
   while (i < SIZE - 1)
   {
@@ -76,7 +79,7 @@ void sumAdjacentWithWhileLoop(int *arr, int *result)
   }
 }
 
-int sumAdjacentWithPointers(int *arr)
+void sumAdjacentWithPointers(int *arr)
 {
   int sum = 0;
   int *left = arr;
@@ -87,13 +90,12 @@ int sumAdjacentWithPointers(int *arr)
     left++;
     right++;
   }
-  return sum;
 }
 
-void runTest(char *testName, void (*sumAdjacentFunction)(int *), int (*sumFunction)(int *))
+void runTest(char *testName, void (*sumAdjacentFunction)(int *))
 {
   int testArray[SIZE];
-  int result[SIZE - 1];
+  
   for (int i = 0; i < SIZE; i++)
   {
     testArray[i] = rand() % 100;
@@ -103,7 +105,7 @@ void runTest(char *testName, void (*sumAdjacentFunction)(int *), int (*sumFuncti
   for (int i = 0; i < 100; i++)
   {
     clock_t start = clock();
-    sumAdjacentFunction(testArray, result);
+    sumAdjacentFunction(testArray);
     clock_t end = clock();
     total_time += (end - start);
   }
@@ -113,12 +115,12 @@ void runTest(char *testName, void (*sumAdjacentFunction)(int *), int (*sumFuncti
 int main()
 {
   srand(time(NULL));
-  runTest("sumAdjacentWithMap", sumAdjacentWithMap, NULL);
-  runTest("sumAdjacentWithReduce", sumAdjacentWithReduce, NULL);
-  runTest("sumAdjacentWithForLoop", sumAdjacentWithForLoop, NULL);
-  runTest("sumArrayOptimal", sumArrayOptimal, NULL);
-  runTest("sumAdjacentValues", sumAdjacentValues, NULL);
-  runTest("sumAdjacentWithMapAndTernary", sumAdjacentWithMapAndTernary, NULL);
-  runTest("sumAdjacentWithArrayFrom", sumAdjacentWithArrayFrom, NULL);
-  runTest("sumAdjacentWithWhileLoop", sumAdjacentWithWhileLoop, NULL);
+  runTest("sumAdjacentWithMap", sumAdjacentWithMap);
+  runTest("sumAdjacentWithReduce", sumAdjacentWithReduce);
+  runTest("sumAdjacentWithForLoop", sumAdjacentWithForLoop);
+  runTest("sumArrayOptimal", sumArrayOptimal);
+  runTest("sumAdjacentValues", sumAdjacentValues);
+  runTest("sumAdjacentWithMapAndTernary", sumAdjacentWithMapAndTernary);
+  runTest("sumAdjacentWithArrayFrom", sumAdjacentWithArrayFrom);
+  runTest("sumAdjacentWithWhileLoop", sumAdjacentWithWhileLoop);
 }
