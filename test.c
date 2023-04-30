@@ -123,4 +123,5 @@ int main()
   runTest("sumAdjacentWithMapAndTernary", sumAdjacentWithMapAndTernary);
   runTest("sumAdjacentWithArrayFrom", sumAdjacentWithArrayFrom);
   runTest("sumAdjacentWithWhileLoop", sumAdjacentWithWhileLoop);
+  runTest("sumAdjacentWithPointers", sumAdjacentWithPointers);
 }
